@@ -1,1 +1,7 @@
 <p>task-list works!</p>
+
+<a [routerLink]="['new-task']">Add new task</a>
+
+<ng-container *ngIf="taskList">
+  <app-task *ngFor="let task of taskList" [temp]="task"></app-task>
+</ng-container>

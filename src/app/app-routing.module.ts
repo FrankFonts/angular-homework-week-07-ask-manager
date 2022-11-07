@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './login.guard';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
     path: 'task-list',
     loadChildren: () =>
       import('./task-list/task-list.module').then((m) => m.TaskListModule),
+    canActivate: [LoginGuard],
   },
 ];
 
