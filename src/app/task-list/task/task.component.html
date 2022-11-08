@@ -1,3 +1,6 @@
 <pre>
-  {{ temp | json }}
+  {{ task | json }}
 </pre>
+<button type="button" (click)="toggleTaskStatus()">
+  {{ task.taskDone }}
+</button>

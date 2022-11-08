@@ -1,1 +1,8 @@
-<p>new-task works!</p>
+<input type="text" #newTaskName />
+<input type="text" #newTaskDescription />
+<button
+  type="button"
+  (click)="addNewTask(newTaskName.value, newTaskDescription.value)"
+>
+  Add new task
+</button>

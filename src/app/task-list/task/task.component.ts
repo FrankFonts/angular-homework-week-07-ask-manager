@@ -4,11 +4,14 @@ import { Task } from '../task-interface';
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  
 })
 export class TaskComponent implements OnInit {
-  @Input() temp!: Task;
+  @Input() task!: Task;
   constructor() {}
 
   ngOnInit(): void {}
+
+  toggleTaskStatus() {
+    this.task.taskDone = !this.task.taskDone;
+  }
 }

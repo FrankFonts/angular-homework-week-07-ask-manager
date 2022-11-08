@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/login.service';
+import { LoginService } from '../../login.service';
 import { Task } from '../task-interface';
 
 @Component({
@@ -10,18 +10,16 @@ import { Task } from '../task-interface';
 export class TaskListComponent implements OnInit {
   taskList: Array<Task> = [
     {
-      taskName: 'wash up',
+      taskName: 'test task',
       taskDescription: 'do the washup, will ya',
       createdByUser: 'John Doe',
+      taskDone: false,
     },
   ];
 
-  constructor(private readonly login: LoginService, private router: Router) {}
+  constructor(private router: Router, private readonly login: LoginService) {}
 
   ngOnInit(): void {
-    // if (this.login.loggedInUser === undefined) {
-    //   this.router.navigate(['']);
-    // }
     console.log(`The logged in user is ${this.login.loggedInUser}`);
   }
 }
