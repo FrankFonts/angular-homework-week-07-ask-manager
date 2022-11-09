@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container new-task">
   <div class="row">
     <div class="col-12">
       <input
@@ -7,8 +7,10 @@
         placeholder="Task Name"
         #newTaskName
       />
-
-      <label *ngIf="newTaskNameError" for="newTaskName"> Can't be empty </label>
+      <br />
+      <label *ngIf="newTaskNameError" for="newTaskName" class="error">
+        Task Name field can't be empty
+      </label>
     </div>
 
     <div class="col-12">
@@ -18,18 +20,31 @@
         placeholder="Task Description"
         #newTaskDescription
       />
-      <label *ngIf="newTaskDescriptionError" for="newTaskDescription">
-        Can't be empty
+      <br />
+      <label
+        *ngIf="newTaskDescriptionError"
+        for="newTaskDescription"
+        class="error"
+      >
+        Task Description field can't be empty
       </label>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-6">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="addNewTask(newTaskName.value, newTaskDescription.value)"
+      >
+        Add new task
+      </button>
+    </div>
+    <div class="col-6">
+      <button type="button" class="btn btn-light" [routerLink]="['/task-list']">
+        Back to the task list
+      </button>
+    </div>
+  </div>
 </div>
-
-<button
-  type="button"
-  (click)="addNewTask(newTaskName.value, newTaskDescription.value)"
->
-  Add new task
-</button>
-
-<button type="button" [routerLink]="['/task-list']">Back to task list</button>

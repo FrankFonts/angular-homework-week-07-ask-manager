@@ -1,5 +1,5 @@
 <div class="container task-list">
-  <div class="row">
+  <div class="row buttons-wrap">
     <div class="col-6">
       <button type="button" [routerLink]="['new-task']" class="btn btn-primary">
         Add new task
@@ -12,23 +12,33 @@
     </div>
   </div>
 
-  <div class="row done-tasks">
-    <div class="col-12">
-      <h2>Done Tasks</h2>
-    </div>
-
-    <ng-container *ngIf="doneTaskList">
-      <app-task *ngFor="let task of doneTaskList" [task]="task"></app-task>
-    </ng-container>
-  </div>
-
   <div class="row undone-tasks">
     <div class="col-12">
       <h2>Undone Tasks</h2>
     </div>
 
-    <ng-container *ngIf="undoneTaskList">
+    <ng-container
+      *ngIf="undoneTaskList && undoneTaskList.length; else noUndoneTasks"
+    >
       <app-task *ngFor="let task of undoneTaskList" [task]="task"></app-task>
     </ng-container>
+
+    <ng-template #noUndoneTasks>
+      <h3>There are no undone tasks</h3>
+    </ng-template>
+  </div>
+
+  <div class="row done-tasks">
+    <div class="col-12">
+      <h2>Done Tasks</h2>
+    </div>
+
+    <ng-container *ngIf="doneTaskList && doneTaskList.length; else noDoneTasks">
+      <app-task *ngFor="let task of doneTaskList" [task]="task"></app-task>
+    </ng-container>
+
+    <ng-template #noDoneTasks>
+      <h3>There are no done tasks</h3>
+    </ng-template>
   </div>
 </div>

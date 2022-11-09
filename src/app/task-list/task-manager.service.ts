@@ -7,7 +7,7 @@ import { Task } from './task-interface';
   providedIn: 'root',
 })
 export class TaskManagerService {
-  taskList: Array<Task> = this.localStorage.getLocalstorage('taskList');
+  taskList: Array<Task> = this.localStorage.getLocalstorage('taskList') || [];
 
   taskList$ = new BehaviorSubject(this.taskList);
 

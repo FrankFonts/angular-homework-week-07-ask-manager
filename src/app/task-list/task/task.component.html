@@ -1,7 +1,11 @@
-<h2>
-  {{ task | taskFormat }}
-</h2>
+<div class="card row">
+  <div class="col-12 col-md-10 content">
+    {{ task | taskFormat }}
+  </div>
 
-<button type="button" (click)="toggleTaskStatus()">
-  {{ task.taskDone }}
-</button>
+  <div class="col-12 col-md-2">
+    <button type="button" class="btn btn-light" (click)="toggleTaskStatus()">
+      {{ task.taskDone ? "Mark as undone" : "Mark as done" }}
+    </button>
+  </div>
+</div>

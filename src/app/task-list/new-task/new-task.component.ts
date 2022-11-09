@@ -26,6 +26,8 @@ export class NewTaskComponent implements OnInit {
       newTaskDescriptionValue
     );
 
+    console.log(inputsOK);
+
     if (inputsOK) {
       const newTask: Task = {
         taskName: newTaskNameValue,
@@ -37,7 +39,7 @@ export class NewTaskComponent implements OnInit {
       this.taskManager.addTaskToList(newTask);
       this.taskManager.saveTaskListLocally();
 
-      this.router.navigateByUrl('task-list');
+      this.router.navigateByUrl('/task-list');
     }
   }
 
