@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../local-storage.service';
+import { BehaviorSubject } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   loggedInUser: string | undefined = undefined;
+
+  loggedInUser$ = new BehaviorSubject(this.loggedInUser);
 
   constructor(
     private readonly localStorage: LocalStorageService,
@@ -28,10 +31,13 @@ export class LoginService {
 
   setLoggedInUser(user: string) {
     this.loggedInUser = user;
+    this.loggedInUser$.next(this.loggedInUser);
+    console.log(`Logged in user: ` + this.loggedInUser);
   }
 
   logout() {
     this.loggedInUser = undefined;
+    this.loggedInUser$.next(this.loggedInUser);
     this.router.navigateByUrl('');
   }
 }

@@ -13,7 +13,6 @@ export class LocalStorageService {
   getLocalstorage(key: string): any {
     const temp = window.localStorage.getItem(key);
 
-    console.log(temp);
     if (temp) {
       return JSON.parse(temp);
     }

@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { AppComponent } from './app.component';
+import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: AppComponent,
   },
   {
     path: 'task-list',
     loadChildren: () =>
       import('./task-list/task-list.module').then((m) => m.TaskListModule),
+    canActivate: [LoggedInGuard],
   },
 ];
 

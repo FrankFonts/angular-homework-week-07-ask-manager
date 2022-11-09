@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -16,28 +16,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  setUserAndLogin(user: string) {
-    const userSet = this.setUser(user);
-
-    if (userSet) {
-      this.router.navigateByUrl('/task-list');
-    }
-  }
-
-  setUser(user: string): boolean {
+  setUser(user: string) {
     if (user.trim() === '' || user === undefined) {
       this.inputError = true;
-      return false;
-    } else {
-      this.inputError = false;
-      this.login.setLoggedInUser(user);
-      const userList = this.login.getUsers();
+      return;
+    }
 
-      if (!userList.includes(user)) {
-        userList.push(user);
-        this.login.setUser(user);
-      }
-      return true;
+    this.inputError = false;
+    this.login.setLoggedInUser(user);
+    const userList = this.login.getUsers();
+
+    if (!userList.includes(user)) {
+      userList.push(user);
+      this.login.setUser(user);
     }
   }
 }
