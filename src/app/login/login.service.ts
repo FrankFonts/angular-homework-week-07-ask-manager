@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from './local-storage.service';
+import { Router } from '@angular/router';
+import { LocalStorageService } from '../local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,10 @@ import { LocalStorageService } from './local-storage.service';
 export class LoginService {
   loggedInUser: string | undefined = undefined;
 
-  constructor(private readonly localStorage: LocalStorageService) {}
+  constructor(
+    private readonly localStorage: LocalStorageService,
+    private readonly router: Router
+  ) {}
 
   getUsers(): Array<string> {
     return this.localStorage.getLocalstorage('users') ?? [];
@@ -24,5 +28,10 @@ export class LoginService {
 
   setLoggedInUser(user: string) {
     this.loggedInUser = user;
+  }
+
+  logout() {
+    this.loggedInUser = undefined;
+    this.router.navigateByUrl('');
   }
 }

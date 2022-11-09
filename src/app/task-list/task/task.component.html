@@ -1,6 +1,7 @@
-<pre>
-  {{ task | json }}
-</pre>
+<h2>
+  {{ task | taskFormat }}
+</h2>
+
 <button type="button" (click)="toggleTaskStatus()">
   {{ task.taskDone }}
 </button>

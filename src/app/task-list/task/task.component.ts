@@ -1,17 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Task } from '../task-interface';
+import { TaskManagerService } from '../task-manager.service';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
   @Input() task!: Task;
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor(private readonly taskManager: TaskManagerService) {}
 
   toggleTaskStatus() {
-    this.task.taskDone = !this.task.taskDone;
+    this.taskManager.updateTaskStatus(this.task);
+
   }
 }

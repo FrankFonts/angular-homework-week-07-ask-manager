@@ -1,7 +1,34 @@
-<p>task-list works!</p>
+<div class="container task-list">
+  <div class="row">
+    <div class="col-6">
+      <button type="button" [routerLink]="['new-task']" class="btn btn-primary">
+        Add new task
+      </button>
+    </div>
+    <div class="col-6">
+      <button type="button" (click)="logout()" class="btn btn-danger">
+        Logout
+      </button>
+    </div>
+  </div>
 
-<a [routerLink]="['new-task']">Add new task</a>
+  <div class="row done-tasks">
+    <div class="col-12">
+      <h2>Done Tasks</h2>
+    </div>
 
-<ng-container *ngIf="taskList">
-  <app-task *ngFor="let task of taskList" [task]="task"></app-task>
-</ng-container>
+    <ng-container *ngIf="doneTaskList">
+      <app-task *ngFor="let task of doneTaskList" [task]="task"></app-task>
+    </ng-container>
+  </div>
+
+  <div class="row undone-tasks">
+    <div class="col-12">
+      <h2>Undone Tasks</h2>
+    </div>
+
+    <ng-container *ngIf="undoneTaskList">
+      <app-task *ngFor="let task of undoneTaskList" [task]="task"></app-task>
+    </ng-container>
+  </div>
+</div>

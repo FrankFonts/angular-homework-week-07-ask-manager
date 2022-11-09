@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+h1,
+h2 {
+  margin: 1em 0;
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+}
+
+.login-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  button,
+  input {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 0 1rem;
+  }
+  input {
+    padding: 1em;
+  }
+}
+
+.task-list {
+  padding: 16px;
+
+  .done-tasks {
+  }
+
+  .undone-tasks {
+  }
+}

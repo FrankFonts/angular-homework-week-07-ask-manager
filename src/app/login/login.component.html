@@ -1,8 +1,13 @@
-<input type="text" #userInput />
-<button
-  type="button"
-  [routerLink]="['task-list']"
-  (click)="setUser(userInput.value)"
->
-  Login
-</button>
+<div class="login-wrap">
+  <h1>Login to Task Manager</h1>
+  <input type="text"
+    (click)="setUserAndLogin(userInput.value)"
+    #userInput />
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="setUserAndLogin(userInput.value)"
+  >
+    Login
+  </button>
+</div>
