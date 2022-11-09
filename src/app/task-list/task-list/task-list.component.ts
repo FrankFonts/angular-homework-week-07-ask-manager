@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login/login.service';
 import { Task } from '../task-interface';
 import { TaskManagerService } from '../task-manager.service';
@@ -13,10 +14,15 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private readonly login: LoginService,
-    private readonly taskManager: TaskManagerService
+    private readonly taskManager: TaskManagerService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
+    if (this.login.loggedInUser === undefined) {
+      this.router.navigateByUrl('/');
+    }
+
     this.taskManager.taskList$.subscribe((taskList) => {
       this.doneTaskList = taskList.filter((task) => task.taskDone);
 

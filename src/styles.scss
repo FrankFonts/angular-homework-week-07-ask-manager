@@ -3,6 +3,14 @@ h2 {
   margin: 1em 0;
 }
 
+.container {
+  padding: 16px;
+
+  @media (min-width: 768px) {
+    padding: 48px 16px;
+  }
+}
+
 .btn,
 input {
   width: 100%;
@@ -40,17 +48,11 @@ label.error {
 }
 
 .task-list {
-  padding: 16px;
-
   .done-tasks,
   .undone-tasks,
   .buttons-wrap {
     margin-bottom: 3rem;
   }
-}
-
-.new-task {
-  padding: 16px;
 }
 
 .card {

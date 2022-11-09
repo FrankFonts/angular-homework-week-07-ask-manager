@@ -18,7 +18,11 @@ export class NewTaskComponent implements OnInit {
     private readonly router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.login.loggedInUser === undefined) {
+      this.router.navigateByUrl('/');
+    }
+  }
 
   addNewTask(newTaskNameValue: string, newTaskDescriptionValue: string) {
     const inputsOK = this.checkForInputErrors(

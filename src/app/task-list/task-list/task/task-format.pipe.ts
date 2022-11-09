@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Task } from '../task-interface';
+import { Task } from '../../task-interface';
 
 @Pipe({
   name: 'taskFormat',
